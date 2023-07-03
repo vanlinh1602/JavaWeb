@@ -10,5 +10,5 @@
 
 `java -jar JavaWeb.jar --spring.datasource.password={Your mySQL Pass}`
 
-- Your mySQL Pass: your my sql pass you set up when install mySQL
+- `Your mySQL Pass`: your my sql pass you set up when install mySQL
 
