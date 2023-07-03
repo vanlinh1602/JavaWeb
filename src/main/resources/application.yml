@@ -1,0 +1,39 @@
+server:
+  port: 80
+  servlet:
+    context-path: /Client
+spring:
+  datasource:
+    password: Linh@1622
+    url: jdbc:mysql://localhost:3306/emultivendor
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    show-sql: false
+    
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+    
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 659055384731-ud2outcjoo6ieqqt4bod38t6paf5pnmc.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+            - email
+            - profile
+          facebook:
+            client-id: 1164522987493780
+            client-secret: eb9622abbe33a7a7de6951fccfe81cae
+            scope:
+            - email
+            - public_profile
+
