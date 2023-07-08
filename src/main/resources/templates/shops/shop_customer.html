@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: page_head('Shop', 'none')" />
+
+<body class="inner">
+	<!-- preloader begin -->
+	<div class="preloader">
+		<img th:src="@{/images/loader.gif}" alt="Gif">
+	</div>
+	<!-- preloader end -->
+
+
+	<!--------------------------------- HEADER SECTION START --------------------------------->
+	<span th:replace="header_section:: content"></span>
+	<!--------------------------------- HEADER SECTION END --------------------------------->
+
+	<!--------------------------------- ACCOUNT START --------------------------------->
+	<div class="account py-120">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-3 col-lg-4">
+					<div class="account-sidebar">
+						<div class="user">
+							<div class="part-img">
+								<img th:src="@{/images/user.jpg}" alt="Image">
+							</div>
+							<div class="part-txt">
+								<h3>
+									<b sec:authentication="principal.fullName"></b>
+								</h3>
+							</div>
+
+						</div>
+						<div class="nav flex-column" id="v-pills-tab" role="tablist"
+							aria-orientation="vertical">
+							<button class="nav-link active" id="v-pills-dashboard-tab"
+								data-bs-toggle="pill" data-bs-target="#v-pills-dashboard"
+								type="button" role="tab" aria-controls="v-pills-dashboard"
+								aria-selected="true">
+								<span class="icon"><i
+									class="fa-duotone fa-objects-column"></i></span> <span class="txt">Dashboard</span>
+							</button>
+							<button class="nav-link" id="v-pills-purchase-tab"
+								data-bs-toggle="pill" data-bs-target="#v-pills-purchase"
+								type="button" role="tab" aria-controls="v-pills-purchase"
+								aria-selected="false">
+								<span class="icon"><i class="fa-duotone fa-file-invoice"></i></span>
+								<span class="txt">Add New Shop</span>
+							</button>
+							<a th:href="@{/products}" class="nav-link"><span class="icon"><i
+									class="fa-duotone fa-wallet"></i></span> <span class="txt">Manage
+									Products</span></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-9 col-lg-8">
+					<div class="tab-content" id="v-pills-tabContent">
+						<div class="tab-pane fade show active" id="v-pills-dashboard"
+							role="tabpanel" aria-labelledby="v-pills-dashboard-tab"
+							tabindex="0">
+							<h2 class="account-title">Manage Shops</h2>
+							<div th:if="${message != null}"
+								class="alert alert-success text-center">[[${message}]]</div>
+							<div class="table-wrap">
+								<div class="table-top">
+
+									<form class="search-box"
+										th:action="@{${moduleURL} + '/page/1'}">
+										<input type="hidden" name="sortField" th:value="${sortField}" />
+										<input type="hidden" name="sortDir" th:value="${sortDir}" />
+										<input type="search" placeholder="Search" name="keyword"
+											th:value="${keyword}" required="required">
+										<button type="submit">
+											<i class="fa-regular fa-magnifying-glass"></i>
+										</button>
+										&nbsp;&nbsp;
+										<button type="button" onclick="clearFilter()">
+											<i class="fa-regular fa-eraser"></i>
+										</button>
+									</form>
+								</div>
+								<div class="table-responsive">
+
+									<table class="table">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Name</th>
+												<th>Image</th>
+												<th>Delivery Address</th>
+												<th>Created Time</th>
+												<th>Status</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="shop : ${listShops}">
+												<td><span class="invoice-id">[[${shop.id}]]</span></td>
+												<td><span class="name">[[${shop.name}]]</span></td>
+												<td><img th:src="@{${shop.imagePath}}"
+													style="height: 50px" width="50px"></td>
+												<td><span class="name">[[${shop.deliveryAddress}]]</span></td>
+												<td><span class="date">[[${shop.createdTime}]]</span></td>
+												<td><span class="date"
+													th:replace="fragments :: status(${shop.enabled}, 'shop', '/shops/' + ${shop.id})"></span></td>
+
+												<td>
+													<div
+														th:replace="fragments :: edit('shop', '/shops/edit/' + ${shop.id})"></div>
+													&nbsp;
+													<div
+														th:replace="fragments :: delete('shop', ${shop.id}, '/shops/delete/' + ${shop.id}, true)"></div>
+
+												</td>
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+								<div th:replace="fragments :: pagination('/shops', 'shops')"></div>
+								<div th:replace="fragments :: confirm_modal" />
+
+							</div>
+						</div>
+						<div class="tab-pane fade" id="v-pills-purchase" role="tabpanel"
+							aria-labelledby="v-pills-purchase-tab" tabindex="0">
+							<h2 class="account-title">Add New Shop</h2>
+							<div class="profile-panel">
+								<div class="profile-top">
+
+									<form th:action="@{/shops/save}" method="post"
+										th:object="${shop}" onsubmit="return checkNameUnique(this);"
+										enctype="multipart/form-data">
+										<input type="hidden" th:field="*{id}" />
+
+										<div class="row g-lg-4 g-3">
+
+
+
+											<div class="col-sm-6">
+												<input type="text" placeholder="Name:" th:field="*{name}"
+													required="required" minlength="3" maxlength="256">
+											</div>
+
+											<div class="col-sm-6">
+												<input type="text" placeholder="Delivery Address:"
+													th:field="*{deliveryAddress}" required="required"
+													minlength="3" maxlength="256">
+											</div>
+
+											<div class="col-sm-6">
+
+												<img id='thumbnail' alt="Image preview"
+													th:src="@{${shop.imagePath}}" style="width: 120px;">
+												<input placeholder="Image" type="file" id="fileImage"
+													name="fileImage" th:required="${shop.image == null}"
+													accept="image/png, image/jpeg" /> <input type="hidden"
+													th:field="*{image}" />
+											</div>
+
+											<div class="col-sm-6">
+												<textarea placeholder="Description" class="form-control"
+													th:field="*{alias}" rows="5" required="required"
+													minlength="3" maxlength="256"></textarea>
+											</div>
+
+
+											<div class="col-12">
+												<div class="btn-box">
+													<input type="submit" value="Save Change" class="def-btn" />
+													<input type="button" value="Cancel" class="def-btn"
+														id="buttonCancel" />
+												</div>
+											</div>
+										</div>
+									</form>
+
+
+								</div>
+							</div>
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+	<!--------------------------------- ACCOUNT END --------------------------------->
+
+
+
+	<!--------------------------------- FEATURES SECTION START --------------------------------->
+	<span th:replace="homepage/feature_section :: content">Feature
+		Section</span>
+	<!--------------------------------- FEATURES SECTION END --------------------------------->
+
+	<div th:replace="fragments :: modal_dialog"></div>
+
+	<!--------------------------------- FOOTER SECTION START --------------------------------->
+	<span th:replace="footer:: footer"></span>
+	<!--------------------------------- FOOTER SECTION END --------------------------------->
+
+	<script type="text/javascript">
+		moduleURL = "[[@{/shops}]]";
+		entityName = "shop";
+		MAX_FILE_SIZE = 10240000;
+
+		/* var csrfHeaderName = "[[${_csrf.headerName}]]";
+		var csrfValue = "[[${_csrf.token}]]";
+
+		$(document).ready(function(){
+			handleDefaultDetailLinkClick();
+		});  */
+
+		contextPath = "[[@{/}]]";
+		function checkNameUnique(form) {
+			url = contextPath + "shops/check_name";
+			shopName = $("#name").val();
+			csrfValue = $("input[name='_csrf']").val();
+
+			params = {
+				name : shopName,
+				_csrf : csrfValue
+			};
+
+			$
+					.post(
+							url,
+							params,
+							function(response) {
+								if (response == "OK") {
+									form.submit();
+								} else if (response == "Duplicated") {
+									showWarningModal("There is another shop having the name "
+											+ shopName);
+								} else {
+									showErrorModal("Unknown response from server");
+								}
+							}).fail(function() {
+						showErrorModal("Could not connect to the server");
+					});
+
+			return false;
+		}
+	</script>
+	<script th:src="@{/vendor/js/jquery-3.6.0.min.js}"></script>
+	<script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+	<script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+	<script th:src="@{/vendor/js/slick.min.js}"></script>
+	<script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+	<script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+	<script th:src="@{/vendor/js/apexcharts.js}"></script>
+	<script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+	<script th:src="@{/js/account.js}"></script>
+	<script th:src="@{/js/common_form.js}"></script>
+	<script th:src="@{/js/common_list.js}"></script>
+	<script th:src="@{/js/common_modal.js}"></script>
+
+</body>
+
+</html>

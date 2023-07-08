@@ -1,0 +1,87 @@
+/*============================================================
+[Master Stylesheet]
+Theme Name:            Revel eCommerce-Multi vendor Ecommerce HTML Template
+Frontend Developer:    Shaikh Abu Dardah
+Version:               1.0
+Author:                Codebasket
+URL:                   https://themeforest.net/user/codebasket
+=========================================================*/
+
+
+/*=======================================================
+TABLE OF CONTENTS:
+
+01  global Style
+
+======section stylsheet======
+
+02  Header section
+03  Mobile Menu section
+04  Banner section
+05  Top Product section
+06  Flash Deal section
+07  Popular Category section
+08  Recently Viewed section 
+09  Hot Deal section
+10  Special Offer section
+11  Season Sale section
+12  Best Seller section
+13  Top Brand section
+14  Testimonial section
+15  Blog section
+16  Feature section
+17  Footer section
+
+======Inner Page stylsheet======
+
+18  About Page
+19  Shop Page
+20  Shop Details Page
+21  Cart Page
+22  Compare Page
+23  Register Page
+24  Faq Page 
+25  Blog Details Page
+26  Account Page
+27  Contact Page
+
+======Responsive stylsheet======
+
+28  Responsive*/
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "main/variable";
+@import "main/global";
+
+// ========================= sections =========================
+
+@import "sections/header";
+@import "sections/mobile-menu";
+@import "sections/banner";
+@import "sections/top-product";
+@import "sections/flash-deal";
+@import "sections/popular-categories";
+@import "sections/recently-viewed";
+@import "sections/hot-deal-banner";
+@import "sections/special-offer";
+@import "sections/season-sale";
+@import "sections/best-seller";
+@import "sections/top-brand";
+@import "sections/testimonial";
+@import "sections/blog";
+@import "sections/feature";
+@import "sections/footer";
+
+@import "pages/about";
+@import "pages/shop";
+@import "pages/shop-details";
+@import "pages/cart";
+@import "pages/compare";
+@import "pages/register";
+@import "pages/faq";
+@import "pages/blog-details";
+@import "pages/account";
+@import "pages/contact";
+
+
+@import "main/responsive";

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head(${pageTitle}, 'none')" />
+<body class="inner">
+    <!-- preloader begin -->
+    <div class="preloader">
+        <img th:src="@{/images/loader.gif}" alt="Gif">
+    </div>
+    <!-- preloader end -->
+
+    <!--------------------------------- HEADER SECTION START --------------------------------->
+   <span th:replace="top_header2:: top_header2"></span>
+    <!--------------------------------- HEADER SECTION END --------------------------------->
+
+    <!--------------------------------- REGISTER SECTION START --------------------------------->
+    <div class="register py-120">
+        <div class="container">
+            <div class="row justify-content-around">            
+                <div class="col-xl-5 col-md-6">
+                    <div class="author-area">
+                        <h2>[[${pageTitle}]]</h2>
+                        <p>There are no enrollment fees or shipping quotas. Simp vide your contact information, create a user ID and word.</p>           
+                        <form th:action="@{/address_book/save}" method="post" th:object="${address}" class="login-form" >
+	                        <input type="hidden" th:field="*{id}" />
+							<input type="hidden" th:field="*{defaultForShipping}" />
+							<input type="hidden" name="redirect" th:value="${param.redirect}" />	
+       
+                            <input class="form-control" type="text" th:field="*{firstName}" placeholder="First Name" required="required" maxlength="45" minlength="2" autofocus="autofocus">
+                            
+                            <input class="form-control" type="text" th:field="*{lastName}" placeholder="Last Name" required="required" maxlength="45" minlength="2" autofocus="autofocus">
+                                   
+                            	
+                            <input class="form-control" type="text" th:field="*{phoneNumber}" placeholder="Phone Number" pattern="^[0-9]*$" required="required" maxlength="10" minlength="10">
+                            	
+                            <input class="form-control" type="text" th:field="*{addressLine1}" placeholder="Address Line 1" required="required" maxlength="64" minlength="3">
+                            <input class="form-control" type="text" th:field="*{addressLine2}" placeholder="Address Line 2" required="required" maxlength="64" minlength="3">
+                            
+                            <input class="form-control" type="text" th:field="*{city}" placeholder="City" required="required" maxlength="45" minlength="2">
+                            
+                            <div class="form-group row">
+							<label class="col-sm-4 col-form-label">Country</label>
+							<div class="col-sm-8">
+								<select class="form-control" th:field="*{country}">
+									<th:block th:each="country : ${listCountries}">
+									<option th:value="${country.id}">[[${country.name}]]</option>
+									</th:block>
+								</select>
+							</div>
+						</div>
+						<br>
+						<div class="form-group row">
+						<label class="col-sm-4 col-form-label">State/Province:</label>
+						<div class="col-sm-8">
+							<input type="text" th:field="*{state}" class="form-control"
+								maxlength="45" minlength="3" list="listStates" />
+							<datalist id="listStates"></datalist>
+						</div>
+					</div>
+					
+					<input class="form-control" type="text" th:field="*{postalCode}" placeholder="Postal Code" required="required" maxlength="10" minlength="2">
+                                     
+                            <input type="submit" value="Update" class="def-btn btn-border" />
+                            
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div th:replace="fragments :: modal_dialog"></div>
+    <!--------------------------------- REGISTER SECTION END --------------------------------->
+
+
+
+    <!--------------------------------- FEATURES SECTION START --------------------------------->
+ <span th:replace="homepage/feature_section :: content">Feature Section</span>
+    <!--------------------------------- FEATURES SECTION END --------------------------------->
+
+
+
+    <!--------------------------------- FOOTER SECTION START --------------------------------->
+    <span th:replace="footer:: footer"></span>
+    <!--------------------------------- FOOTER SECTION END --------------------------------->
+<script type="text/javascript">
+	contextPath = "[[@{/}]]";
+</script>
+
+    <script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+    <script th:src="@{/vendor/js/slick.min.js}"></script>
+    <script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+    <script th:src="@{/vendor/js/nouislider.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-ui.min.js}"></script>
+    <script th:src="@{/vendor/js/MonthPicker.min.js}"></script>
+    <script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/common_customer_form.js}"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+		xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+	    <div class="top-header" th:fragment="top_header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xxl-6 col-xl-7 col-lg-7">
+                        <ul class="top-header-link d-lg-flex d-none">
+                            <li>
+                                <a href="#">SHOP EVENTS & SAVE UP TO 65% OFF!</a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/">Follow us on Facebook</a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a th:href="@{/shops}">Seller Centre</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="col-xxl-6 col-xl-5 col-lg-5">
+                        <ul class="top-header-link justify-content-lg-end justify-content-center">
+                           
+                            <li>
+                                <select name="currency" id="currency" class="select">
+                                    <option value="USD">Dollar (USD)</option>
+                                    <option value="BDT">Taka (BDT)</option>
+                                </select>
+                            </li>
+                            <li>
+                                <div class="select-language">
+                                    <div class="language">
+                                        <div class="select-lang">
+                                            <div id="aw" data-input-name="country" data-selected-country="UK" data-scrollable-height="250px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                             <th:block sec:authorize="isAuthenticated()">                         
+                             <li>
+                               <span style="color: white;">Hi,&nbsp;<b ><a style="color: red;" th:href="@{/dashboards}" sec:authentication="principal.fullName"></a></b></span>
+                            </li>
+                            </th:block>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

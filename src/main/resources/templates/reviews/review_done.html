@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<head th:replace="fragments :: page_head('Write Product Review', 'tag')" />
+	<link th:href="@{/star-rating/css/star-rating.css}" media="all" rel="stylesheet" type="text/css" />
+	<script th:src="@{/star-rating/js/star-rating.js}" type="text/javascript"></script>
+	<link th:href="@{/star-rating/themes/krajee-svg/theme.css}" media="all" rel="stylesheet" type="text/css" />
+	<script th:src="@{/star-rating/themes/krajee-svg/theme.js}"></script>
+</head>
+
+<body class="inner">
+    <!-- preloader begin -->
+    <div class="preloader">
+        <img th:src="@{/images/loader.gif}" alt="Gif">
+    </div>
+    <!-- preloader end -->
+
+   
+    <!--------------------------------- HEADER SECTION START --------------------------------->
+    <span th:replace="header_section2:: content"></span>
+    <!--------------------------------- HEADER SECTION END --------------------------------->
+
+	
+	 <!--------------------------------- CONTACT START --------------------------------->
+    <div class="contact py-120">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-4 col-lg-5 col-md-6">
+                    <div class="contact-info">
+                      
+                        <ul>
+                            <li>
+                               
+                                <div>
+		<img th:src="@{${review.product.mainImagePath}}" style="height: 500px" />
+	</div>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xxl-7 col-lg-7 col-md-6">
+                    <div class="contact-form">
+                        <h2 class="title" >[[${review.product.name}]]</h2> <br>
+                        <div>
+							<span class="h4 text-success">Your Review has been posted!</span>
+						</div>	
+                        
+                        <form class="row g-lg-4 g-3">
+                        	
+                            <div class="col-lg-6 col-md-12 col-sm-6">
+                               <input type="text" th:value="${review.rating}" class="product-rating-star" dir="ltr" data-size="md" />
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-6">
+                               <input type="text" th:value="${review.headline}" class="form-control" readonly="readonly" />
+                            </div>
+                           
+                          
+                            <div class="col-12">
+                                <textarea rows="7" cols="10" readonly="readonly">[[${review.comment}]]</textarea><br>
+                                
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <!--------------------------------- CONTACT END --------------------------------->
+   
+
+    <!--------------------------------- FOOTER SECTION START --------------------------------->
+     <span th:replace="footer:: footer"></span>
+    <!--------------------------------- FOOTER SECTION END --------------------------------->
+
+<script type="text/javascript">
+	$(".product-rating-star").rating({
+		displayOnly: true,
+		hoverOnClear: false,
+		showCaption: false,
+		theme: 'krajee-svg'
+	});	
+</script>
+    <script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+    <script th:src="@{/vendor/js/slick.min.js}"></script>
+    <script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+    <script th:src="@{/vendor/js/apexcharts.js}"></script>
+    <script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/account.js}"></script>
+
+</body>
+
+</html>

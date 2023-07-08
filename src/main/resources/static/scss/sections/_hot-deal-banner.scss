@@ -1,0 +1,86 @@
+.hot-deal-banner {
+    padding: 25px 0;
+    .bg {
+        background: url(../images/hot-deal-banner-bg.jpg) center center no-repeat;
+        background-size: cover;
+        padding: 90px 60px;
+        .banner-txt {
+            h2 {
+                font-size: 40px;
+                line-height: 100%;
+                font-weight: 400;
+                color: $white;
+                text-transform: uppercase;
+                margin-top: -6px;
+                margin-bottom: 21px;
+                span {
+                    font-weight: 700;
+                }
+            }
+            p {
+                font-size: 20px;
+                line-height: 100%;
+                font-weight: 400;
+                color: $white;
+                text-transform: uppercase;
+                padding-bottom: 28px;
+                margin-bottom: 30px;
+                position: relative;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 200px;
+                    height: 1px;
+                    background: $white;
+                }
+            }
+            .countdown {
+                margin-bottom: 30px;
+                .syotimer__body {
+                    display: flex;
+                    .syotimer-cell {
+                        text-align: center;
+                        padding: 0 25px;
+                        position: relative;
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            left: 100%;
+                            transform: translateX(-50%);
+                            width: 1px;
+                            height: 40px;
+                            background: $white;
+                        }
+                        .syotimer-cell__value {
+                            font-family: $rubik;
+                            font-size: 40px;
+                            line-height: 100%;
+                            font-weight: 700;
+                            color: $white;
+                            margin-bottom: 12px;
+                        }
+                        .syotimer-cell__unit {
+                            font-size: 15px;
+                            line-height: 100%;
+                            text-transform: uppercase;
+                            color: $white;
+                            margin-bottom: -2px;
+                        }
+                        &:first-child {
+                            padding-left: 0;
+                        }
+                        &:last-child {
+                            padding-right: 0;
+                            &:after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

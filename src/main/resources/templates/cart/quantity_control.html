@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="quantity_control(quantityValue, productId)">
+		<form>
+			<div class="row g-xl-4 g-3">
+
+				<div class="col-lg-4 col-md-12 col-sm-4">
+					<div class="quantity-wrap">
+						<label>QTY</label>
+						<div class="product-count">
+							<div class="quantity rapper-quantity">
+								<input type="number" min="1" max="5" step="1" th:value="${quantityValue}" th:id="'quantity' + ${productId}" 
+					onkeydown="return false;" 
+									readonly>
+								<div class="quantity-nav">
+									<div class="quantity-button quantity-down" th:pid="${productId}">
+										<i class="fa-solid fa-minus"></i>
+									</div>
+									<div class="quantity-button quantity-up" th:pid="${productId}">
+										<i class="fa-solid fa-plus"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

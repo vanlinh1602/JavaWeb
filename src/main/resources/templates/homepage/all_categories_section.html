@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	 <div class="popular-categories" th:fragment="content">
+        <div class="container">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="row align-items-center g-lg-4 g-1">
+                        <div class="col-lg-6 col-9">
+                            <h2 class="title">Explore Popular Categories</h2>
+                        </div>
+                        <div class="col-lg-6 col-3">
+                            <div class="text-end">
+                                <a th:href="@{/}" class="explore-section">View more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel-body">
+                    <div class="custom-row">
+                        <div class="custom-col" th:each="cat : ${listCategories}">
+                            <div class="category-card">
+                                <div class="part-img">
+                                    <a th:href="@{'/c/' + ${cat.alias}}"><img th:src="@{${cat.imagePath}}" alt="Image"></a>
+                                </div>
+                                <div class="part-txt">
+                                    <h3>
+                                        <a th:href="@{'/c/' + ${cat.alias}}">[[${cat.name}]]</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                       
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

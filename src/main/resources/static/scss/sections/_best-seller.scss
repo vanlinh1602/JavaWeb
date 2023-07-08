@@ -1,0 +1,178 @@
+.best-seller {
+    .rg-30 {
+        row-gap: 30px;
+    }
+    .single-box {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        border: 1px solid $txt-color-2;
+        padding: 20px 30px;
+        position: relative;
+        z-index: 2;
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 100%;
+            background: $txt-color-2;
+            z-index: -1;
+        }
+        .part-txt {
+            width: calc(100% - 186px);
+            .title {
+                display: block;
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 600;
+                color: $black;
+                margin-top: -5px;
+                margin-bottom: 10px;
+                &:hover {
+                    color: $color-1;
+                }
+            }
+            .star {
+                display: flex;
+                align-items: center;
+                gap: 3px;
+                font-size: 13px;
+                line-height: 100%;
+                color: $black-2;
+                margin-bottom: 10px;
+                .rated {
+                    color: $gold;
+                }
+                span {
+                    font-family: $rubik;
+                    line-height: 100%;
+                    margin-left: 5px;
+                }
+            }
+            .part-btn {
+                height: 30px;
+                line-height: 28px;
+                font-size: 14px;
+                font-weight: 500;
+                color: $white;
+                background: $color-1;
+                padding: 0 15px;
+                border: 1px solid $color-1;
+                &:hover {
+                    background: transparent;
+                    color: $color-1;
+                }
+            }
+        }
+    }
+}
+
+.top-rated-n-best-seller {
+    .top-rated {
+        .top-rated-slider-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 5px;
+            margin-bottom: -6px;
+            button {
+                width: 25px;
+                height: 25px;
+                line-height: 25px;
+                background: $txt-color-2;
+                color: $black-2;
+                &.slick-next {
+                    background: $color-2;
+                    color: $white;
+                    &:hover {
+                        background: $txt-color-2;
+                        color: $black-2;
+                    }
+                }
+                &:hover {
+                    background: $color-2;
+                    color: $white;
+                }
+            }
+        }
+        .slick-slider {
+            overflow: hidden;
+        }
+        .slick-list {
+            margin-bottom: -20px;
+        }
+        .top-product-card {
+            margin-bottom: 20px;
+        }
+    }
+    .best-seller {
+        height: 100%;
+        .g-20 {
+            row-gap: 20px;
+        }
+        .top-product-card {
+            .part-txt {
+                .title {
+                    margin-bottom: -3px;
+                }
+            }
+        }
+    }
+    .top-product-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        height: 89px;
+        .part-img {
+            box-shadow: 0px 0px 0px 1px rgba($txt-color-2, .5);
+            width: 100px;
+            height: 89px;
+            overflow: hidden;
+        }
+        .part-txt {
+            width: calc(100% - 115px);
+            .star {
+                font-size: 12px;
+                line-height: 100%;
+                color: $txt-color;
+                margin-top: 1px;
+                margin-bottom: 12px;
+                .rated {
+                    color: $gold;
+                }
+            }
+            .title {
+                display: block;
+                font-size: 14px;
+                line-height: 16px;
+                font-weight: 500;
+                color: $black-0;
+                margin-bottom: 11px;
+                &:hover {
+                    color: $black-2;
+                }
+            }
+            .price {
+                font-size: 14px;
+                line-height: 100%;
+                color: $black;
+                margin-bottom: 0;
+                span {
+                    color: $black-2;
+                    opacity: 0.8;
+                    position: relative;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        width: 100%;
+                        height: 1px;
+                        background: $black-2;
+                    }
+                }
+            }
+        }
+    }
+}

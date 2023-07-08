@@ -1,0 +1,404 @@
+body {
+    font-family: $poppins;
+    background: $bg-color;
+    line-height: 1.5;
+    &.clear {
+        overflow: hidden;
+    }
+    &.home-2 {
+        background: $white;
+    }
+    &.inner {
+        background: $white;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 100%;
+        max-width: 1530px;
+    }
+}
+
+input,
+select,
+textarea,
+button {
+    padding: 0;
+    border: 0;
+    outline: none;
+    transition: 0.3s;
+    background: transparent;
+}
+
+input[type=number],[type=month] {
+    width: 100% !important;
+    -moz-appearance: textfield;
+    &::-webkit-inner-spin-button,
+    &::-webkit-calendar-picker-indicator {
+        display: none;
+        appearance: none;
+        margin: 0;
+    }
+}
+
+a {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+span {
+    display: inline-block;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.def-btn {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 40px;
+    background: $color-1;
+    color: $white;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.3s;
+    &.btn-border {
+        border: 1px solid $color-1;
+        line-height: 48px;
+    }
+    &:hover,
+    &:focus {
+        background: $white;
+        color: $color-1;
+    }
+}
+
+.btn-success {
+    background: #1bad1b;
+    &:hover, &:focus {
+        color: #1bad1b;
+    }        
+}
+
+.def-btn-2 {
+    height: 40px;
+    line-height: 38px;
+    padding: 0 30px;
+    background: $white;
+    border: 1px solid $color-1;
+    color: $color-1;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.3s;
+    &:hover,
+    &:focus {
+        background: $color-1;
+        color: $white;
+    }
+}
+.home-2 {
+    .def-btn {
+        background: $color-2;
+        &:hover,
+        &:focus {
+            background: $white;
+            color: $color-2;
+        }
+    }
+    .def-btn-2 {
+        border-color: $color-2;
+        color: $color-2;
+        &:hover,
+        &:focus {
+            background: $color-2;
+            color: $white;
+        }
+    }
+    .def-btn-3 {
+        height: 50px;
+        line-height: 50px;
+        padding: 0 40px;
+        background: $white;
+        color: $color-2;
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: uppercase;
+        transition: 0.3s;
+        &:hover,
+        &:focus {
+            background: $color-2;
+            color: $white;
+        }
+    }
+    .panel {
+        .panel-header {
+            &::after {
+                background: $color-2;
+            }
+            .explore-section {
+                color: $color-2;
+            }
+        }
+        .nav {
+            button {
+                &.active {
+                    color: $color-2;
+                }
+            }
+        }
+    }
+}
+
+.py-120 {
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.pt-120 {
+    padding-top: 120px;
+}
+
+.pb-120 {
+    padding-bottom: 120px;
+}
+
+.py-60 {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.pt-60 {
+    padding-top: 60px;
+}
+
+.pb-60 {
+    padding-bottom: 60px;
+}
+
+.py-25 {
+    padding: 25px 0;
+}
+
+.pt-25 {
+    padding-top: 25px;
+}
+
+.pb-25 {
+    padding-bottom: 25px;
+}
+
+.pt-50 {
+    padding-top: 50px;
+}
+
+.pb-50 {
+    padding-bottom: 50px;
+}
+
+.panel {
+    background: $white;
+    padding: 40px 20px;
+    &.panel-2 {
+        padding: 60px 20px;
+    }
+    &.panel-3 {
+        padding: 0;
+    }
+    &.panel-shadow {
+        box-shadow: 0px 0px 30px -5px rgba($black-0, 0.1);
+    }
+    .panel-header {
+        position: relative;
+        border-bottom: 1px solid $border-color;
+        padding-bottom: 18px;
+        margin-bottom: 40px;
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: $color-1;
+        }
+        .title {
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: 600;
+            text-transform: capitalize;
+            color: $black-3;
+            margin-top: -2px;
+            margin-bottom: 0;
+        }
+        .explore-section {
+            font-size: 16px;
+            line-height: 100%;
+            font-weight: 500;
+            color: $color-1;
+        }
+    }
+    .nav {
+        justify-content: flex-end;
+        border: 0;
+        button {
+            padding: 0 10px;
+            border: 0;
+            margin: 0;
+            font-size: 16px;
+            line-height: 100%;
+            color: $black-2;
+            text-transform: capitalize;
+            &:first-child {
+                padding-left: 0;
+            }
+            &:last-child {
+                padding-right: 0;
+            }
+            &.active {
+                background-color: transparent;
+                color: $color-1;
+            }
+        }
+    }
+}
+
+.heading {
+    &.heading-2 {
+        h2 {
+            &::after {
+                background: $color-2;
+            }
+        }
+    }
+    h2 {
+        font-size: 26px;
+        line-height: 100%;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $black;
+        margin-top: -4px;
+        padding-bottom: 19px;
+        margin-bottom: 40px;
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 3px;
+            background: $color-1;
+        }
+    }
+}
+
+.nice-select {
+    &::after {
+        width: 8px;
+        height: 8px;
+        border-width: 1px;
+        border-color: $black;
+    }
+}
+
+.text-success {
+    color: #1bad1b !important;
+}
+
+.month-picker {
+    display: inline-block;
+    position: absolute;
+    z-index: 9999;
+    background: $bg-color-4;
+    background: $white;
+    box-shadow: 0px 5px 30px 0px rgba($black-0, 0.1);
+    width: max-content;
+}
+.month-picker-year-table {
+    .month-picker-previous,
+    .month-picker-next {
+        padding: 10px;
+    }
+    .month-picker-title {
+        width: 150px;
+        padding: 10px;
+    }
+    .month-picker-next {
+        .ui-button {
+            .ui-icon {
+                background-image: url(../images/arrow-right.png);
+            }
+        }
+    }
+    .ui-button {
+        padding: 0;
+        border: 0;
+        text-align: center;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+        font-weight: 500;
+        color: $black-2;
+        .ui-icon {
+            background-image: url(../images/arrow-left.png);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 18px;
+            border: 1px solid $txt-color-2;
+            width: 40px;
+            height: 40px;
+            transition: .3s;
+            &:hover {
+                box-shadow: 0px 5px 20px 0px rgba($black-0, 0.1);
+                border-color: transparent;
+            }
+        }
+    }
+}
+.month-picker-month-table {
+    width: 100%;
+    td {
+        text-align: center;
+        width: calc(100% / 3);
+        padding: 0;
+        height: 40px;
+        border-top: 1px solid $txt-color-2;
+        border-left: 1px solid $txt-color-2;
+        &:first-child {
+            border-left: 0;
+        }
+        .ui-button {
+            font-size: 14px;
+            color: $black-2;
+            &.ui-state-highlight {
+                color: $color-1;
+            }
+            &:hover {
+                color: $color-1;
+            }
+        }
+    }
+}
+
+.apexcharts-tooltip-z-group {
+    display: none;
+}

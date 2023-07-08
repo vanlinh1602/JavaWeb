@@ -1,0 +1,328 @@
+.blog-details {
+    .main-img {
+        margin-bottom: 30px;
+    }
+    .part-txt {
+        margin-bottom: 30px;
+        .title-box {
+            .blog-info {
+                display: flex;
+                gap: 35px;
+                margin-top: -2px;
+                margin-bottom: 21px;
+                li {
+                    font-family: $rubik;
+                    font-size: 16px;
+                    line-height: 100%;
+                    color: $black-2;
+                }
+            }
+            .blog-title {
+                font-size: 24px;
+                line-height: 34px;
+                font-weight: 700;
+                color: $black;
+                margin-bottom: 31px;
+            }
+        }
+        p {
+            font-size: 16px;
+            line-height: 26px;
+            color: $black-2;
+            margin-top: -6px;
+            margin-bottom: 22px;
+            &:last-child {
+                margin-bottom: -8px;
+            }
+        }
+        .secondary-title {
+            font-size: 20px;
+            line-height: 34px;
+            font-weight: 600;
+            color: $black;
+            padding-top: 21px;
+            margin-bottom: 20px;
+        }
+    }
+    .admin-words {
+        background: $white-4;
+        padding: 45px 30px;
+        margin-bottom: 40px;
+        p {
+            font-size: 16px;
+            line-height: 26px;
+            color: $black-2;
+            margin-top: -6px;
+            margin-bottom: 22px;
+        }
+        .admin {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            h6 {
+                font-family: $rubik;
+                font-size: 18px;
+                line-height: 100%;
+                font-weight: 500;
+                color: $black;
+                margin-top: -2px;
+                margin-bottom: 10px;
+            }
+            span {
+                display: block;
+                font-size: 14px;
+                line-height: 100%;
+                color: $black-2;
+                margin-bottom: -2px;
+            }
+        }
+    }
+    .comment-area {
+        .title {
+            font-family: $rubik;
+            font-size: 24px;
+            line-height: 100%;
+            font-weight: 600;
+            color: $black;
+            padding-bottom: 8px;
+            margin-top: -3px;
+            margin-bottom: 30px;
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 50px;
+                height: 2px;
+                background: $color-1;
+            }
+        }
+        .comments {
+            margin-bottom: 40px;
+            .single-comment {
+                display: flex;
+                gap: 25px;
+                margin-bottom: 40px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &.reply {
+                    margin-left: 100px;
+                }
+                .part-img {
+                    width: 100px;
+                }
+                .txt-box {
+                    width: calc(100% - 125px);
+                    h4 {
+                        font-size: 18px;
+                        line-height: 100%;
+                        font-weight: 600;
+                        color: $black;
+                        margin-top: -2px;
+                        margin-bottom: 5px;
+                    }
+                    span {
+                        font-size: 14px;
+                        line-height: 100%;
+                        color: $black-2;
+                        margin-bottom: 23px;
+                    }
+                    p {
+                        font-size: 16px;
+                        line-height: 26px;
+                        color: $black-2;
+                        margin-top: -6px;
+                        margin-bottom: -8px;
+                    }
+                }
+            }
+        }
+        .comment-form {
+            input {
+                width: 100%;
+                background: $white-4;
+                height: 45px;
+                padding: 0 30px;
+                color: $black;
+            }
+            textarea {
+                width: 100%;
+                background: $white-4;
+                height: 180px;
+                padding: 25px 30px;
+                color: $black;
+            }
+        }
+    }
+    .blog-sidebar {
+        .searchbox {
+            display: flex;
+            margin-bottom: 30px;
+            input {
+                width: calc(100% - 60px);
+                background: $white-4;
+                height: 50px;
+                padding: 0 25px;
+                color: $black;
+            }
+            button {
+                text-align: center;
+                width: 60px;
+                height: 50px;
+                line-height: 50px;
+                background: $color-1;
+                color: $white;
+                font-size: 18px;
+                &:hover, &:focus {
+                    background: $black;
+                }
+            }
+        }
+        .sidebar-title {
+            font-size: 22px;
+            line-height: 100%;
+            font-weight: 600;
+            padding-bottom: 8px;
+            margin-top: -2px;
+            margin-bottom: 25px;
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 50px;
+                height: 2px;
+                background: $color-1;
+            }
+        }
+        .recent-post {
+            margin-bottom: 30px;
+            ul {
+                li {
+                    margin-bottom: 20px;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    a {
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+                        .part-img {
+                            width: 90px;
+                            height: 90px;
+                            display: flex;
+                            justify-content: center;
+                            overflow: hidden;
+                            img {
+                                height: 100%;
+                                max-width: none;
+                            }
+                        }
+                        .txt-box {
+                            width: calc(100% - 105px);
+                            .title {
+                                display: block;
+                                font-size: 18px;
+                                line-height: 28px;
+                                font-weight: 600;
+                                color: $black;
+                                margin-top: -6px;
+                                margin-bottom: 6px;
+                                transition: .3s;
+                            }
+                            .date {
+                                display: block;
+                                font-size: 16px;
+                                line-height: 100%;
+                                color: $black-2;
+                                margin-bottom: -3px;
+                            }
+                        }
+                        &:hover {
+                            .txt-box {
+                                .title {
+                                    color: $color-1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .categories {
+            margin-bottom: 30px;
+            ul {
+                overflow: hidden;
+                li {
+                    border-bottom: 1px solid $txt-color-2;
+                    margin-bottom: 10px;
+                    &:first-child {
+                        margin-top: -10px;
+                    }
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    a {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        height: 40px;
+                        line-height: 40px;
+                        font-size: 16px;
+                        color: $black-2;
+                        i {
+                            margin-right: 10px;
+                        }
+                        &:hover, &:focus {
+                            color: $color-1;
+                        }
+                    }
+                }
+            }
+        }
+        .image-slider {
+            margin-bottom: 30px;
+            .carousel {
+                .carousel-control-next, .carousel-control-prev {
+                    top: 50%;
+                    bottom: auto;
+                    transform: translateY(-50%);
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    font-size: 24px;
+                    color: $black;
+                    background: $white;
+                    opacity: 1;
+                    &:hover {
+                        background: $color-1;
+                        color: $white;
+                    }
+                }
+            }
+        }
+        .tags {
+            .btn-box {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                a {
+                    height: 35px;
+                    line-height: 33px;
+                    border: 1px solid $txt-color-2;
+                    padding: 0 15px;
+                    font-size: 16px;
+                    color: $black-2;
+                    &:hover, &:focus {
+                        background: $color-1;
+                        border-color: $color-1;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}

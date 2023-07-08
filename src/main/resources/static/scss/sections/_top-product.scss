@@ -1,0 +1,78 @@
+.top-product {
+    padding: 25px 0;
+    &.top-product-2 {
+        .product-card {
+            border: 1px solid rgba($black-3, 0.1);
+            padding: 0 30px;
+            .part-txt {
+                width: calc(100% - 165px);
+                padding: 30px 0;
+                .price {
+                    color: $color-2;
+                }
+            }
+            .part-img {
+                width: 140px;
+            }
+        }
+    }
+    .product-card {
+        background: $white;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        padding: 30px;
+        transition: .3s;
+        .part-txt {
+            width: calc(100% - 175px);
+            .price {
+                font-family: $rubik;
+                font-size: 16px;
+                line-height: 100%;
+                font-weight: 500;
+                color: $color-1;
+                margin-top: -2px;
+                margin-bottom: 11px;
+                span {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: $txt-color;
+                    position: relative;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        width: 100%;
+                        height: 1px;
+                        background: $txt-color;
+                    }
+                }
+            }
+            .product-name {
+                font-family: $rubik;
+                font-size: 26px;
+                font-weight: 300;
+                color: $black-3;
+                margin-bottom: 24px;
+                span {
+                    font-weight: 500;
+                }
+            }
+        }
+        .part-img {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: auto;
+                max-height: 100%;
+            }
+        }
+        &:hover {
+            box-shadow: 0px 0px 30px 0px rgba($black-3, 0.1);
+        }
+    }
+}

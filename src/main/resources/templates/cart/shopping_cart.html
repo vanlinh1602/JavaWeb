@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head('Shopping Cart', 'none')" />
+
+<body class="inner">
+    <!-- preloader begin -->
+    <div class="preloader">
+        <img th:src="@{/images/loader.gif}" alt="Gif">
+    </div>
+    <!-- preloader end -->
+
+    <!--------------------------------- HEADER SECTION START --------------------------------->
+    <span th:replace="header_section2:: content"></span>
+    <!--------------------------------- HEADER SECTION END --------------------------------->
+
+	 <!--------------------------------- BANNER SECTION START --------------------------------->
+    <div class="banner banner-inner">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6 col-md-9 col-8">
+                    <div class="breadcrumb-txt">
+                        <h1>Shopping Cart</h1>
+                        <ul>
+                            <li><a th:href="@{/}"><i class="fa-regular fa-house"></i></a></li>
+                            <li>/</li>
+                            <li>Cart</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-3 col-4">
+                    <div class="part-img">
+                        <img th:src="@{/images/breadcrumb-img.png}" alt="Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------------------- BANNER SECTION END --------------------------------->
+	
+	 <!--------------------------------- CART SECTION START --------------------------------->
+    <div class="tab-section py-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tab-nav">
+                        <button class="single-nav active" data-tab="cartTab">
+                            <span class="txt">Shopping Cart</span>
+                            <span class="sl-no">01</span>
+                        </button>                      
+                    </div>
+                    
+                    <div id="sectionEmptyCartMessage" th:class="'text-center' + ${#lists.isEmpty(cartItems) ? '' : ' d-none'}" >
+						<h2>You have not chosen any products yet.</h2>
+					</div>
+	
+                    <div class="tab-contents">
+                        <div class="single-tab active" id="cartTab">
+                            <div class="table-wrap revel-table">
+                                <div class="table-responsive">
+                                
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr>
+                                            	<th>QTY</th>
+                                                <th>Image</th>
+                                                <th>Product Name</th>
+                                                <th>Shop</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <th:block th:each="item, status : ${cartItems}">
+                                            <tr th:with="product = ${item.product}" th:id="'row' + ${status.count}">
+                                            <td><div class="divCount">[[${status.count}]]</div></td>
+                                                <td>
+                                                    <div class="product-img">
+                                                        <img th:src="@{${product.mainImagePath}}" alt="Image">
+                                                    </div>
+                                                </td>
+                                                <td><a th:href="@{'/p/' + ${product.alias}}" target="_blank"
+							th:title="${product.name}" class="product-name">[[${product.shortName}]]</a></td>
+												 <td><div class="divCount">[[${product.shop.name}]]</div></td>
+                                                <td><div th:replace="product/product_fragment :: product_price"></div></td>
+                                                <td>
+                                                    <div th:replace="cart/quantity_control :: quantity_control(${item.quantity}, ${product.id})"></div>
+                                                </td>
+                                                <td><span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span><span th:id="'subtotal' + ${product.id}" class="h4 subtotal">[[${#numbers.formatDecimal(item.subtotal, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span><span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span></td>
+                                               <td ><a class="fa-light fa-trash-can linkRemove" th:rowNumber="${status.count}" 
+							th:href="@{'/cart/remove/' + ${product.id}}"></a></td>
+                                               
+                                            </tr>
+                                           </th:block>
+                                        </tbody>
+                                    </table>
+                                   
+                                </div>
+                            </div>
+                            <div class="btn-box">
+                                <a th:href="@{/}" class="def-btn">Continue Shopping</a>
+                                <button class="def-btn" id="cartUpdate" disabled>Update Cart</button>
+                            </div>
+                            <div class="cart-total-panel" th:unless="${#lists.isEmpty(cartItems)}" id="sectionTotal">
+                                <h3 class="title">Cart Total</h3>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6" th:unless="${shippingSupported}">
+                                            <h4 class="sub-title" >No shipping available for your location</h4>
+                                            <div class="shipping-mode">
+                                                <div class="form-check" th:if="${usePrimaryAddressAsDefault}">
+                                                    <input class="form-check-input shipping-check" type="radio" name="shippingMode"  checked>
+                                                    <span class="sub-input"><i class="fa-regular fa-check"></i></span>
+                                                    <label class="form-check-label" for="storePickup">
+                                                        <a th:href="@{/dashboards(redirect=cart)}" class="h6">Update your address</a>
+                                                    </label>
+                                                </div>
+                                                <div class="form-check" th:unless="${usePrimaryAddressAsDefault}">
+                                                    <input class="form-check-input shipping-check" type="radio" name="shippingMode" id="homeDelivery">
+                                                    <span class="sub-input"><i class="fa-regular fa-check"></i></span>
+                                                    <label class="form-check-label" for="homeDelivery">
+                                                       <a th:href="@{/address_book(redirect=cart)}" class="h6">Use another shipping address</a>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="calculate-area">
+                                                <ul>
+                                                    
+                                                    <li>Shipping <span class="price-txt" id="shippingFee"><span class="text-success">Free</span></span></li>
+                                                    <li class="total-price-wrap">Estimated Total <span class="price-txt"><b th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</b>
+                                                    <span id="total">[[${#numbers.formatDecimal(estimatedTotal, 1, THOUSANDS_POINT_TYPE, DECIMAL_DIGITS, DECIMAL_POINT_TYPE)}]]</span>
+                                                    <span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span></span></li>
+                                                </ul>
+	                                                <div th:if="${shippingSupported}">
+	                                                <form th:action="@{/checkout}">
+	                                                	<button type="submit" class="def-btn tab-next-btn" >Proceed to checkout <i class="fa-light fa-cart-circle-check"></i></button>
+	                                           		</form>
+	                                           		</div>
+	                                           		
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------------------- CART SECTION END --------------------------------->
+
+	<div th:replace="fragments :: modal_dialog"></div>
+
+    <!--------------------------------- FOOTER SECTION START --------------------------------->
+     <span th:replace="footer:: footer"></span>
+    <!--------------------------------- FOOTER SECTION END --------------------------------->
+
+<script type="text/javascript">
+	contextPath = "[[@{/}]]";
+	var csrfHeaderName = "[[${_csrf.headerName}]]";
+	var csrfValue = "[[${_csrf.token}]]";
+	
+	decimalDigits = [[${DECIMAL_DIGITS}]];
+	decimalPointType = "[[${DECIMAL_POINT_TYPE}]]";
+	thousandsPointType = "[[${THOUSANDS_POINT_TYPE}]]";
+	
+</script>
+    <!-- <script th:src="@{/vendor/js/jquery-3.6.0.min.js}"></script> -->
+    <script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+    <script th:src="@{/vendor/js/slick.min.js}"></script>
+    <script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+    <script th:src="@{/vendor/js/apexcharts.js}"></script>
+    <script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/cart.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery.number.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/shopping_cart.js}"></script>
+	<script type="text/javascript" th:src="@{/js/common_modal.js}"></script>
+    
+</body>
+
+</html>

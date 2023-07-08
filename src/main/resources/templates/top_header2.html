@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+		xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+	    <div class="header header-inner" th:fragment="top_header2">
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xxl-6 col-xl-7 col-lg-7">
+                        <ul class="top-header-link d-lg-flex d-none">
+                         <li>
+                                <a th:href="@{/}">HOME</a>
+                            </li>
+                            <li>
+                                <a href="#">SHOP EVENTS & SAVE UP TO 65% OFF!</a>
+                            </li>
+                            <li>
+                                <a href="#">Call Us: 001-1234-88888</a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                    <div class="col-xxl-6 col-xl-5 col-lg-5">
+                        <ul class="top-header-link justify-content-lg-end justify-content-center">
+                            
+                            <li>
+                                <select name="currency" id="currency" class="select">
+                                    <option value="USD">Dollar (USD)</option>
+                                    <option value="BDT">Taka (BDT)</option>
+                                </select>
+                            </li>
+                            <li>
+                                <div class="select-language">
+                                    <div class="language">
+                                        <div class="select-lang">
+                                            <div id="aw" data-input-name="country" data-selected-country="UK" data-scrollable-height="250px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+</body>
+</html>

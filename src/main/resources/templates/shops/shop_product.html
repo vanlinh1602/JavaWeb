@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head('Products - Revel eCommerce', 'none')" />
+</head>
+
+<body class="inner">
+    <!-- preloader begin -->
+    <div class="preloader">
+        <img th:src="@{/images/loader.gif}" alt="Gif">
+    </div>
+    <!-- preloader end -->
+ 
+    <!--------------------------------- HEADER SECTION START --------------------------------->
+    <span th:replace="top_header2:: top_header2"></span>
+    <!--------------------------------- HEADER SECTION END --------------------------------->
+
+    <!--------------------------------- BANNER SECTION START --------------------------------->
+     <!--------------------------------- ACCOUNT START --------------------------------->
+    <div class="account py-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-4">
+                    <div class="account-sidebar">
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-8">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active">
+                          
+                          <div class="card-header">
+							<h3 class="text-center">Manage Products</h3>						
+							 <a th:href="@{/products/new}" class="fa-solid fa-folder-plus">&nbsp;Add Product</a>
+						</div>
+						 <div th:if="${message != null}" class="alert alert-success text-center">
+									[[${message}]]
+								</div>	
+						<br>
+                            <div class="table-wrap">
+                             <div class="table-top">
+                                            
+                                            <form class="search-box" th:action="@{${moduleURL} + '/page/1'}">
+	                                            <input type="hidden" name="sortField" th:value="${sortField}" />
+												<input type="hidden" name="sortDir" th:value="${sortDir}" />
+                                                <input type="search" placeholder="Search" name="keyword" th:value="${keyword}" required="required">
+                                                <button type="submit"><i class="fa-regular fa-magnifying-glass"></i></button>
+                                                &nbsp;&nbsp;
+												<button type="button"  onclick="clearFilter()">
+													<i class="fa-regular fa-eraser"></i>
+												</button>
+                                            </form>
+                                        </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-hover table-responsive-xl">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Image</th>
+                                                <th>Name</th>             
+                                                <th>Brand</th>
+                                                <th>Category</th>
+                                                <th>Shop</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="product : ${listProducts}">
+                                                <td><span class="invoice-id">[[${product.id}]]</span></td>
+                                                <td>
+												<img th:src="@{${product.mainImagePath}}" style="width: 120px" class="img-fluid" />
+												</td>
+                                                <td><span class="name">[[${product.shortName}]] </span></td>
+                                                <td><span class="date">[[${product.brand.name}]]</span></td>
+                                                <td><span class="amount">[[${product.category.name}]]</span></td>
+                                                 <td><span class="amount">[[${product.shop.name}]]</span></td>
+                                                 <td><span class="date" th:replace="fragments :: status(${product.enabled}, 'product', '/products/' + ${product.id})"></span></td>
+                                                                    
+                                                <td>
+                                                <a th:href="@{/products/new}" class="fa-solid fa-folder-plus" th:title="'Add Product '">&nbsp;</a>
+												<div th:replace="fragments :: edit('product', '/products/edit/' + ${product.id})"></div>
+												&nbsp; 
+												<div th:replace="fragments :: delete('product', ${product.id}, '/products/delete/' + ${product.id}, true)"></div>	
+															
+											</td>	
+                                            </tr>
+                                           
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div th:replace="fragments :: pagination('/products', 'product')"></div>
+                               	<div th:replace="fragments :: confirm_modal" />
+                            </div>
+                        </div>
+       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--------------------------------- ACCOUNT END --------------------------------->
+    <!--------------------------------- BANNER SECTION END --------------------------------->
+
+    <!--------------------------------- FEATURES SECTION START --------------------------------->
+   <span th:replace="homepage/feature_section :: content">Feature Section</span>
+    <!--------------------------------- FEATURES SECTION END --------------------------------->
+
+
+    <!--------------------------------- FOOTER SECTION START --------------------------------->
+   <span th:replace="footer:: footer"></span>
+    <!--------------------------------- FOOTER SECTION END --------------------------------->
+	<script type="text/javascript">
+    moduleURL = "[[@{/products}]]";
+	entityName = "product";
+	
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+	var csrfValue = "[[${_csrf.token}]]";
+
+	$(document).ready(function(){
+		handleDefaultDetailLinkClick();
+	});  
+	
+	contextPath = "[[@{/}]]";
+	
+</script>
+    <script th:src="@{/vendor/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+    <script th:src="@{/vendor/js/slick.min.js}"></script>
+    <script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+    <script th:src="@{/vendor/js/nouislider.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-ui.min.js}"></script>
+    <script th:src="@{/vendor/js/MonthPicker.min.js}"></script>
+    <script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+     <script th:src="@{/js/common_form.js}"></script>
+    <script th:src="@{/js/common_list.js}"></script>
+    <script th:src="@{/js/common_modal.js}"></script>
+    <script>
+    </script>
+</body>
+
+</html>

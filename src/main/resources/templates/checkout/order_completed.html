@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head('Order Completed', 'none')" />
+
+<body class="inner">
+    <!-- preloader begin -->
+    <div class="preloader">
+        <img th:src="@{/images/loader.gif}" alt="Gif">
+    </div>
+    <!-- preloader end -->
+
+    <!--------------------------------- HEADER SECTION START --------------------------------->
+    <span th:replace="header_section2:: content"></span>
+    <!--------------------------------- HEADER SECTION END --------------------------------->
+
+	 <!--------------------------------- BANNER SECTION START --------------------------------->
+    <div class="banner banner-inner">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6 col-md-9 col-8">
+                    <div class="breadcrumb-txt">
+                        <h1>Shopping Cart</h1>
+                        <ul>
+                            <li><a th:href="@{/}"><i class="fa-regular fa-house"></i></a></li>
+                            <li>/</li>
+                            <li>Cart</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-3 col-4">
+                    <div class="part-img">
+                        <img th:src="@{/images/breadcrumb-img.png}" alt="Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------------------- BANNER SECTION END --------------------------------->
+	
+	 <!--------------------------------- CART SECTION START --------------------------------->
+    <div class="tab-section py-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tab-nav">
+                        <button class="single-nav active" data-tab="orderCompletedTab" >
+                            <span class="txt">Order Completed</span>
+                          <span class="sl-no">03</span>
+                        </button>                     
+                    </div>
+                   
+	
+                    <div class="tab-contents">
+                     	 <div class="single-tab active" id="orderCompletedTab">
+                            <div class="check-icon">
+                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/> <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                            </div>
+                            <div class="order-complete-msg">
+                                <h2>Your Order Has Been Completed</h2>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------------------- CART SECTION END --------------------------------->
+
+
+    <!--------------------------------- FOOTER SECTION START --------------------------------->
+     <span th:replace="footer:: footer"></span>
+    <!--------------------------------- FOOTER SECTION END --------------------------------->
+
+
+    <script th:src="@{/vendor/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+    <script th:src="@{/vendor/js/slick.min.js}"></script>
+    <script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+    <script th:src="@{/vendor/js/apexcharts.js}"></script>
+    <script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+	<script th:src="@{/js/cart.js}"></script>
+    
+</body>
+
+</html>

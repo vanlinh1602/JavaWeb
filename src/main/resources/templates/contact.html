@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: page_head('Contact', 'none')" />
+
+<body class="inner">
+    <!-- preloader begin -->
+    <div class="preloader">
+        <img th:src="@{/images/loader.gif}" alt="Gif">
+    </div>
+    <!-- preloader end -->
+
+   
+    <!--------------------------------- HEADER SECTION START --------------------------------->
+    <span th:replace="header_section2:: content"></span>
+    <!--------------------------------- HEADER SECTION END --------------------------------->
+
+	
+	 <!--------------------------------- CONTACT START --------------------------------->
+    <div class="contact py-120">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-4 col-lg-5 col-md-6">
+                    <div class="contact-info">
+                        <h2 class="title">Contact info</h2>
+                        <ul>
+                            <li>
+                                <div class="part-icon">
+                                    <span><i class="fa-solid fa-phone-flip"></i></span>
+                                </div>
+                                <div class="part-txt">
+                                    <a href="#">Aptech@gmail.com</a>
+                                    <a href="#">+1 212-683-9756</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="part-icon">
+                                    <span><i class="fa-solid fa-location-dot"></i></span>
+                                </div>
+                                <div class="part-txt">
+                                    <span>799 W 6th St Hoisington, Kansas 121 Sparrow Hawk, Alberta</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="part-icon">
+                                    <span><i class="fa-solid fa-clock"></i></span>
+                                </div>
+                                <div class="part-txt">
+                                    <span>Mon - Sat : 8:00am - 10:00pm</span>
+                                    <span>Sunday: Closed</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xxl-7 col-lg-7 col-md-6">
+                    <div class="contact-form">
+                        <h2 class="title" >Leave a Message</h2>
+                        <div th:if="${message != null}" class="alert alert-success text-center">
+							[[${message}]]
+						</div>
+                        
+                        <form class="row g-lg-4 g-3" method="post" th:action="@{/sendMessage}" th:object="${contact}">
+                            <div class="col-lg-6 col-md-12 col-sm-6">
+                                <input type="text" placeholder="Name" th:field="*{name}" required="required" maxlength="45" minlength="8">
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-6">
+                                <input type="email" placeholder="Email" th:field="*{email}" required="required" maxlength="45" minlength="8">
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-6">
+                                <input type="text" placeholder="Address" th:field="*{address}" required="required" maxlength="45" minlength="8">
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-6">
+                                <input type="text" placeholder="Phone Number" th:field="*{phone}" pattern="^[0-9]*$" required="required" maxlength="10" minlength="10">
+                            </div>
+                            <div class="col-12">
+                                <textarea placeholder="Your message" th:field="*{message}" required></textarea><br>
+                                
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="def-btn btn-border w-100">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="map">
+            	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1385.7264772589967!2d106.68892890395932!3d10.778621125163133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3a9d97282b%3A0x45e74ca0fc0300dc!2zQXB0ZWNoIENvbXB1dGVyIEVkdWNhdGlvbiAtIEjhu4cgdGjhu5FuZyDEkcOgbyB04bqhbyBM4bqtcCB0csOsbmggdmnDqm4gcXXhu5FjIHThur8gQXB0ZWNo!5e0!3m2!1svi!2s!4v1664204913301!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+    <!--------------------------------- CONTACT END --------------------------------->
+   
+    
+    
+    
+    
+
+	<div th:replace="fragments :: modal_dialog"></div>
+
+    <!--------------------------------- FOOTER SECTION START --------------------------------->
+     <span th:replace="footer:: footer"></span>
+    <!--------------------------------- FOOTER SECTION END --------------------------------->
+
+	<script type="text/javascript">
+    	moduleURL = "[[@{/contacts}]]";
+		entityName = "contact";
+		contextPath = "[[@{/}]]";
+		
+	
+	</script>
+    <script th:src="@{/vendor/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+    <script th:src="@{/vendor/js/slick.min.js}"></script>
+    <script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+    <script th:src="@{/vendor/js/apexcharts.js}"></script>
+    <script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/account.js}"></script>
+    <script th:src="@{/js/common_form.js}"></script>
+    <script th:src="@{/js/common_list.js}"></script>
+    <script th:src="@{/js/common_modal.js}"></script>
+    
+</body>
+
+</html>

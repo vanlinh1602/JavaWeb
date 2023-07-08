@@ -1,0 +1,140 @@
+.recently-viewed {
+    .new-arrival-3 {
+        position: relative;
+        .part-txt {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: $white;
+            p {
+                font-size: 16px;
+                line-height: 100%;
+                margin-bottom: 14px;
+            }
+            h3 {
+                font-size: 28px;
+                line-height: 100%;
+                font-weight: 700;
+                margin-bottom: 16px;
+            }
+            .def-btn-2 {
+                background: transparent;
+                border-color: $white;
+                color: $white;
+                &:hover {
+                    background: $white;
+                    color: $color-2;
+                }
+            }
+        }
+    }
+    .recent-view-slide-nav {
+        .owl-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 5px;
+            margin-bottom: -6px;
+            button {
+                text-align: center;
+                width: 25px;
+                height: 25px;
+                line-height: 23px;
+                border: 1px solid rgba($black, .07);
+                background: #f0f2f9;
+                color: $black;
+                font-size: 13px;
+                &.disabled {
+                    color: rgba($black, .5);
+                    &:hover {
+                        background: #f0f2f9;
+                        color: rgba($black, .5);
+                    }
+                }
+                &:hover {
+                    color: $white;
+                    background: $color-2;
+                }
+            }
+        }
+    }
+    .recent-view-slider {
+        .single-slider {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+    }
+    .single-product-card-2 {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border: 1px solid $txt-color-2;
+        padding: 20px;
+        transition: .3s;
+        .part-img {
+            width: 145px;
+            height: 140px;
+        }
+        .part-txt {
+            width: calc(100% - 160px);
+            .category {
+                display: block;
+                font-size: 12px;
+                line-height: 100%;
+                text-transform: uppercase;
+                color: $black-2;
+                margin-top: -2px;
+                margin-bottom: 15px;
+            }
+            .title {
+                font-size: 14px;
+                line-height: 1.3;
+                font-weight: 600;
+                color: $black;
+                margin-bottom: 10px;
+                &:hover {
+                    color: $black-2
+                }
+            }
+            .star {
+                font-size: 12px;
+                line-height: 100%;
+                color: $black-2;
+                margin-bottom: 18px;
+                .rated {
+                    color: $gold;
+                }
+                span {
+                    font-family: $rubik;
+                }
+            }
+            .price {
+                font-size: 16px;
+                line-height: 100%;
+                font-weight: 500;
+                color: $color-2;
+                margin-bottom: -3px;
+                span {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: $black-2;
+                    position: relative;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        width: 100%;
+                        height: 1px;
+                        background: $black;
+                    }
+                }
+            }
+        }
+        &:hover {
+            border-color: $color-2;
+        }
+    }
+}

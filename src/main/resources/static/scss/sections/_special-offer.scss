@@ -1,0 +1,10 @@
+.special-offer {
+    padding: 25px 0;
+    .single-offer {
+        min-height: 100px;
+        transition: .3s;
+        &:hover {
+            box-shadow: 0px 10px 30px -5px rgba($black-0, .3);
+        }
+    }
+}

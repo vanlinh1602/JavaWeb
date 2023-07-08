@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<head th:replace="fragments :: page_head(${pageTitle}, 'tag')" />
+	<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}" />
+	<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+</head>
+<body class="inner">
+    <!-- preloader begin -->
+    <div class="preloader">
+        <img th:src="@{/images/loader.gif}" alt="Gif">
+    </div>
+    <!-- preloader end -->
+ 
+    <!--------------------------------- HEADER SECTION START --------------------------------->
+    <span th:replace="top_header2:: top_header2"></span>
+    <!--------------------------------- HEADER SECTION END --------------------------------->
+
+    <!--------------------------------- BANNER SECTION START --------------------------------->
+     <!--------------------------------- ACCOUNT START --------------------------------->
+    <div class="account py-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-4">
+                    <div class="account-sidebar">
+                    </div>
+                </div>
+                <div class="col-xl-10 col-lg-8">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active">
+                          
+                          <div class="card-header">
+							<h3 class="text-center">Manage Product | [[${pageTitle}]]</h3>						
+							 
+						</div>
+						<br>
+                         	<form th:action="@{/products/save}" method="post" onsubmit="return checkUnique(this)"
+		enctype="multipart/form-data"
+		th:object="${product}">
+		<input type="hidden" th:field="*{id}" />
+		<input th:if="${product.category != null}" type="hidden" 
+			id="categoryId" th:value="${product.category.id}" />
+	<div>
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+		  <li class="nav-item">
+		    <a class="nav-link active" data-bs-toggle="tab" href="#overview" role="tab">Overview</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" data-bs-toggle="tab" href="#description" role="tab">Description</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" data-bs-toggle="tab" href="#images" role="tab">Images</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" data-bs-toggle="tab" href="#details" role="tab">Details</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" data-bs-toggle="tab" href="#shipping" role="tab">Shipping</a>
+		  </li>		  
+		</ul>
+		
+		<div class="tab-content">
+		  <div class="tab-pane active p-3" id="overview" role="tabpanel">
+		  	<div th:replace="shops/product_overview :: content"></div>
+		  </div>
+		  <div class="tab-pane" id="description" role="tabpanel">
+			
+		  	<div th:replace="shops/product_description :: content"></div>
+		
+		  </div>
+		  <div class="tab-pane" id="images" role="tabpanel">
+		  
+		  	<div th:replace="shops/product_images :: content"></div>
+		  </div>
+		  <div class="tab-pane p-3" id="details" role="tabpanel">  	
+		  	
+		  	<div th:replace="shops/product_details :: content"></div> <br>
+		  	<div>
+		  		<input type="button" class="btn btn-secondary" value="Add More Detail"
+		  			onclick="addNextDetailSection()" />
+		  	</div>
+		  		
+		  </div>
+		  <div class="tab-pane p-3" id="shipping" role="tabpanel">
+	
+		  	<div th:replace="shops/product_shipping :: content"></div>
+
+		  </div>
+		</div>	
+	</div>
+	<div class="text-center">
+		<input type="submit" value="Create" class="btn btn-primary m-3" />
+		<input type="button" value="Cancel" class="btn btn-danger" id="buttonCancel" />
+	</div>
+	</form>
+                        </div>
+       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div th:replace="fragments :: modal_dialog"></div>
+    <!--------------------------------- ACCOUNT END --------------------------------->
+    <!--------------------------------- BANNER SECTION END --------------------------------->
+
+    <!--------------------------------- FEATURES SECTION START --------------------------------->
+   <span th:replace="homepage/feature_section :: content">Feature Section</span>
+    <!--------------------------------- FEATURES SECTION END --------------------------------->
+
+
+    <!--------------------------------- FOOTER SECTION START --------------------------------->
+   <span th:replace="footer:: footer"></span>
+    <!--------------------------------- FOOTER SECTION END --------------------------------->
+	<script type="text/javascript">
+	MAX_FILE_SIZE = 502400; // 500KB
+	
+	moduleURL = "[[@{/products}]]";
+	brandModuleURL = "[[@{/brands}]]";
+	defaultImageThumbnailSrc = "[[@{/images/image-thumbnail.png}]]";
+	checkUniqueUrl = "[[@{/products/check_unique}]]";
+	
+</script>
+
+    <script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+    <script th:src="@{/vendor/js/slick.min.js}"></script>
+    <script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+    <script th:src="@{/vendor/js/nouislider.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-ui.min.js}"></script>
+    <script th:src="@{/vendor/js/MonthPicker.min.js}"></script>
+    <script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    
+    <script th:src="@{/js/common_form.js}"></script>
+	<script th:src="@{/js/product_form_overview.js}"></script>
+	<script th:src="@{/js/product_form_images.js}"></script>
+	<script th:src="@{/js/product_form_details.js}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	    <div class="top-brand py-25" th:fragment="content">
+        <div class="container">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h2 class="title">Top Brands</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row g-lg-3 g-2">
+                        <div class="col-md-2 col-sm-3 col-4" th:each="brandSection : ${section.brandSections}" th:with="brand = ${brandSection.brand}">
+                            <div class="logo-box">
+                                <a th:href="@{'/brand/' + ${brand.id}}"><img th:src="@{${brand.logoPath}}" alt="brand"></a>
+                            </div>
+                            
+                        </div>  
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

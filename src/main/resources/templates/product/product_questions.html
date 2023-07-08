@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head(${pageTitle}, 'none')" />
+
+<body class="inner">
+    <!-- preloader begin -->
+    <div class="preloader">
+        <img th:src="@{/images/loader.gif}" alt="Gif">
+    </div>
+    <!-- preloader end -->
+
+   
+    <!--------------------------------- HEADER SECTION START --------------------------------->
+    <span th:replace="header_section2:: content"></span>
+    <!--------------------------------- HEADER SECTION END --------------------------------->
+
+	
+	 <!--------------------------------- CONTACT START --------------------------------->
+    <div class="contact py-120">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-4 col-lg-5 col-md-6">
+                    <div class="contact-info">
+                        <h2 class="title">[[${product.name}]]</h2>
+                        <ul>
+                            <li>
+                               
+                                <div>
+		<img th:src="@{${product.mainImagePath}}" width="150"/>
+		
+	</div>
+	
+				
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xxl-7 col-lg-7 col-md-6">
+                    <div class="contact-form">
+                      <div>
+				<a style="color: red;" th:href="@{'/questions/' + ${product.alias} + '/page/' + ${currentPage} + '?sortField=votes&sortDir=desc'}">Sort by most voted</a>
+				&nbsp;
+				<a style="color: red;" th:href="@{'/questions/' + ${product.alias} + '/page/' + ${currentPage} + '?sortField=askTime&sortDir=desc'}">Sort by most recent</a>
+			</div>
+			</div>
+                       <br>
+                      <div th:replace="question/questions_votes :: content"></div>
+<div th:replace="fragments :: pagination('/questions/' + ${product.alias}, 'questions')"></div>
+		
+	<div th:replace="fragments :: modal_dialog"></div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+
+    <!--------------------------------- CONTACT END --------------------------------->
+   
+    
+    
+    
+    
+
+
+    <!--------------------------------- FOOTER SECTION START --------------------------------->
+     <span th:replace="footer:: footer"></span>
+    <!--------------------------------- FOOTER SECTION END --------------------------------->
+
+<script type="text/javascript">
+	contextPath = "[[@{/}]]";
+	var csrfHeaderName = "[[${_csrf.headerName}]]";
+	var csrfValue = "[[${_csrf.token}]]";
+	
+	$(document).ready(function() {
+		$(".linkVoteQuestion").on("click", function(e) {
+			e.preventDefault();
+			doVote($(this), "question");
+		});		
+	});		
+</script>
+    <script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+    <script th:src="@{/vendor/js/slick.min.js}"></script>
+    <script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+    <script th:src="@{/vendor/js/apexcharts.js}"></script>
+    <script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/common_modal.js}"></script>
+<script th:src="@{/js/common_vote.js}"></script>
+
+    
+</body>
+
+</html>

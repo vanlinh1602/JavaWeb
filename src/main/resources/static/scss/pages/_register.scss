@@ -1,0 +1,196 @@
+.register {
+    .login-area {
+        h2 {
+            font-size: 24px;
+            line-height: 100%;
+            font-weight: 600;
+            color: $black;
+            margin-top: -1px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 26px;
+            color: $black;
+            margin-bottom: 22px;
+        }
+        .login-form {
+            input {
+                width: 100%;
+                height: 45px;
+                padding: 0 30px;
+                border: 1px solid $txt-color-2;
+                margin-bottom: 20px;
+            }
+            .def-btn {
+                width: 100%;
+            }
+        }
+        .devider {
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            line-height: 100%;
+            font-weight: 500;
+            color: $black;
+            padding: 20px 0;
+            margin-top: -5px;
+            margin-bottom: -3px;
+        }
+        .social-login-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .btn-fb {
+                text-transform: capitalize;
+                background: #4265f9;
+                &:hover {
+                    background: $black;
+                    color: $white;
+                }
+            }
+            .btn-gl {
+                text-transform: capitalize;
+                background: #D64E42;
+                &:hover {
+                    background: $black;
+                    color: $white;
+                }
+            }
+        }
+    }
+    .author-area {
+        h2 {
+            font-size: 24px;
+            line-height: 100%;
+            font-weight: 600;
+            color: $black;
+            margin-top: -1px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 26px;
+            color: $black;
+            margin-bottom: 22px;
+        }
+        .login-form {
+            input:not([type=checkbox], [type=radio]) {
+                width: 100%;
+                height: 45px;
+                padding: 0 30px;
+                border: 1px solid $txt-color-2;
+                margin-bottom: 20px;
+            }
+            .form-check {
+                position: relative;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                gap: 10px;
+                margin-bottom: 20px;
+                .form-check-input {
+                    opacity: 0;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 25px;
+                    height: 25px;
+                    cursor: pointer;
+                    margin: 0;
+                    &:checked + .sub-input {
+                        background: $color-1;
+                        border-color: $color-1;
+                        color: $white;
+                        animation: check .4s ease-in;
+                    }
+                }
+                .sub-input {
+                    text-align: center;
+                    width: 25px;
+                    height: 25px;
+                    line-height: 25px;
+                    font-size: 14px;
+                    color: $txt-color;
+                    border: 1px solid $txt-color-2;
+                    border-radius: 50%;
+                    transition: .3s;
+                }
+                .form-check-label {
+                    font-size: 14px;
+                    line-height: 24px;
+                    font-weight: 500;
+                    color: $txt-color-3;
+                    cursor: pointer;
+                    user-select: none;
+                    transition: .3s;
+                    &.checked {
+                        color: $black;
+                    }
+                    a {
+                        color: $color-1;
+                    }
+                }
+            }
+            .def-btn {
+                width: 100%;
+            }
+        }
+        .form-check {
+            margin-bottom: 20px;
+        }
+        .devider {
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            line-height: 100%;
+            font-weight: 500;
+            color: $black;
+            padding: 20px 0;
+            margin-top: -5px;
+            margin-bottom: -3px;
+        }
+        .social-login-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .btn-fb {
+                text-transform: capitalize;
+                background: #4265f9;
+                &:hover {
+                    background: $black;
+                    color: $white;
+                }
+            }
+            .btn-gl {
+                text-transform: capitalize;
+                background: #D64E42;
+                &:hover {
+                    background: $black;
+                    color: $white;
+                }
+            }
+        }
+    }
+    .social-login-box {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .btn-fb {
+            text-transform: capitalize;
+            background: #4265f9;
+            &:hover {
+                background: $black;
+                color: $white;
+            }
+        }
+        .btn-gl {
+            text-transform: capitalize;
+            background: #D64E42;
+            &:hover {
+                background: $black;
+                color: $white;
+            }
+        }
+    }
+}

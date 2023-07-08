@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	 <div class="col-xl-3 col-lg-2 category-col" th:fragment="content">
+                    <div class="category-list">
+                        <ul>                                                    
+                            <li class="category-item" th:each="catSection : ${section.categorySections}" th:with="cat = ${catSection.category}">
+                                <a th:href="@{'/c/' + ${cat.alias}}">
+                                    <div class="icon">
+                                        <span><i class="fa-thin fa-shuffle"></i></span>
+                                    </div>
+                                    <span>[[${cat.name}]]</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+</body>
+</html>

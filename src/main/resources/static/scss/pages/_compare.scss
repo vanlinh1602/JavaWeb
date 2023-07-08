@@ -1,0 +1,89 @@
+.compare {
+    .table {
+        margin: 0;
+        th, td {
+            width: 25%;
+            vertical-align: middle;
+            text-align: center;
+            padding: 10px;
+            height: 60px;
+            font-size: 14px;
+            line-height: 100%;
+            text-transform: uppercase;
+            color: $black-2;
+        }
+        th {
+            font-weight: 600;
+        }
+        .product-card {
+            padding: 20px 0;
+            .part-img {
+                width: 130px;
+                margin: 0 auto;
+                margin-bottom: 30px;
+            }
+            .part-txt {
+                margin-bottom: -7px;
+                p {
+                    margin-top: -5px;
+                    margin-bottom: 0;
+                    text-transform: capitalize;
+                    a {
+                        font-size: 16px;
+                        line-height: 100%;
+                        color: $black;
+                        &:hover {
+                            color: $color-1
+                        }
+                    }
+                }
+            }
+        }
+        .star {
+            font-family: $rubik;
+            color: $txt-color-3;
+            .rated {
+                color: $gold;
+            }
+        }
+        .price-txt {
+            font-family: $rubik;
+            font-weight: 500;
+            color: $color-1;
+        }
+        .color-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            span {
+                width: 15px;
+                height: 15px;
+                background: $white-2;
+                border-radius: 3px;
+                &:nth-child(1) {
+                    background: $color-1;
+                }
+                &:nth-child(2) {
+                    background: $black;
+                }
+                &:nth-child(3) {
+                    background: blue;
+                }
+            }
+        }
+        .def-btn {
+            height: 40px;
+            line-height: 40px;
+            &:hover {
+                background: $black;
+                color: $white;
+            }
+        }
+        .delete-btn {
+            font-size: 20px;
+            &:hover {
+                color: red;
+            }
+        }
+    }
+}

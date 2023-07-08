@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="content" class="modal fade" id="returnOrderModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="returnOrderModalTitle">Return Order</h4>
+				<button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+			</div>
+			
+			<form onsubmit="return submitReturnOrderForm();">
+			<div class="modal-body">
+				<div id="divReason">
+					<div>Refund reason:</div>
+					<div>
+						<input type="radio" name="returnReason" value="I bought the wrong items" required />
+						I bought the wrong items
+					</div>
+					<div>
+						<input type="radio" name="returnReason" value="I received the wrong items" />
+						I received a defective product
+					</div>
+					<div>
+						<input type="radio" name="returnReason" value="The product was damaged/defective" />
+						Unauthorized use of my payment method
+					</div>
+					<div>
+						<input type="radio" name="returnReason" value="The product arrived too late" />
+						I was charged the wrong amount
+					</div>	
+					<div class="m-1">
+						<textarea class="form-control" id="returnNote" rows="5" maxlength="500"
+							placeholder="Please provide any additional details that you can about the unauthorized purcharses, including the charges that were listed, the amount, and the type of payment method."></textarea>
+					</div>														
+				</div>
+				<div id="divMessage" class="text-center"></div>
+			</div>
+			
+			
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-success" id="firstButton">Send Request</button>
+				<button type="button" class="btn btn-danger" id="secondButton" data-bs-dismiss="modal">Cancel</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>	

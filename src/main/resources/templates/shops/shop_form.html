@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head('Your Shop Details', 'none')" />
+
+<body class="inner">
+    <!-- preloader begin -->
+    <div class="preloader">
+        <img th:src="@{/images/loader.gif}" alt="Gif">
+    </div>
+    <!-- preloader end -->
+
+    <!--------------------------------- HEADER SECTION START --------------------------------->
+    <span th:replace="header_section:: content"></span>
+    <!--------------------------------- HEADER SECTION END --------------------------------->
+
+    <!--------------------------------- REGISTER SECTION START --------------------------------->
+    <div class="register py-120">
+        <div class="container">
+            <div class="row justify-content-around">
+                <div class="col-xl-5 col-md-6">
+                    <div class="author-area">
+                        <h2>Your Shop Details</h2>
+                        <p>There are no enrollment fees or shipping quotas. Simp vide your contact information, create a user ID and word.</p>
+                        <form th:action="@{/update_shop}" method="post" class="login-form" th:object="${shop}"
+                          enctype="multipart/form-data">
+                        <input type="hidden" th:field="*{id}">
+                       <div th:if="${message != null}" class="alert alert-success text-center">
+						[[${message}]]
+						</div>
+							<div>
+								<label>Shop Name</label>
+                            	<input type="text"th:field="*{name}" readonly="readonly" style="color: red;" >
+							</div>
+							<div>
+								<label>Description</label>
+                            	<input type="text"th:field="*{alias}" required minlength="5" maxlength="256">	
+							</div>
+							<div>
+								<label>Delivery Address</label>
+                            	<input type="text"th:field="*{deliveryAddress}" required minlength="5" maxlength="256">
+							</div>
+                           	<div>
+                           		<label>Image:</label>
+                           		<input type="hidden" th:field="*{image}">
+                                <img id='thumbnail' alt="Image preview" th:src="@{${shop.imagePath}}" class="img-fluid" style="height: 100px;">                                  	
+                                <input type="file" id="fileImage" name="fileImage" th:required="${shop.image == null}" accept="image/png, image/jpeg" />                    
+                           	</div>
+                            
+                           
+                            <input type="submit" value="Update" class="def-btn btn-border"/>
+                        </form>
+                       
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+    
+        <div th:replace="fragments :: modal_dialog"></div>
+    <!--------------------------------- REGISTER SECTION END --------------------------------->
+
+    <!--------------------------------- FEATURES SECTION START --------------------------------->
+ <span th:replace="homepage/feature_section :: content">Feature Section</span>
+    <!--------------------------------- FEATURES SECTION END --------------------------------->
+       
+    <!--------------------------------- FOOTER SECTION START --------------------------------->
+   <span th:replace="footer:: footer"></span>
+    <!--------------------------------- FOOTER SECTION END --------------------------------->
+<script type="text/javascript">
+	contextPath = "[[@{/}]]";
+	MAX_FILE_SIZE = 10240000;
+	
+/* 	function checkNameUnique(form) {
+		url = contextPath + "shops/check_name";
+		shopName = $("#name").val();
+		csrfValue = $("input[name='_csrf']").val();
+		
+		params = {name: shopName, _csrf: csrfValue};
+		
+		$.post(url, params, function(response) {
+			if (response == "OK") {
+				form.submit();
+			} else if (response == "Duplicated") {
+				showWarningModal("There is another shop having the name " + shopName);
+			} else {
+				showErrorModal("Unknown response from server");
+			}
+		}).fail(function() {
+			showErrorModal("Could not connect to the server");
+		});
+		
+		return false;
+	}	 */
+	
+</script>
+  
+    <script th:src="@{/vendor/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.flagstrap.min.js}"></script>
+    <script th:src="@{/vendor/js/slick.min.js}"></script>
+    <script th:src="@{/vendor/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery.syotimer.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-modal-video.min.js}"></script>
+    <script th:src="@{/vendor/js/nouislider.min.js}"></script>
+    <script th:src="@{/vendor/js/jquery-ui.min.js}"></script>
+    <script th:src="@{/vendor/js/MonthPicker.min.js}"></script>
+    <script th:src="@{/vendor/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/common_modal.js}"></script>
+    <script th:src="@{/js/common_form.js}"></script>
+
+</body>
+</html>

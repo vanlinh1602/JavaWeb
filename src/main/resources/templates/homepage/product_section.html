@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	 <!--------------------------------- FEATURED PRODUCT SECTION START --------------------------------->
+    <div class="featured-product py-25" th:fragment="content">
+        <div class="container">
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="row">
+                        <div class="col-8">
+                            <h2 class="title">Featured products</h2>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-end">
+                                <a th:href="@{/}" class="explore-section">View more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="product-custom-row">
+                        <div class="custom-col" th:each="productSection : ${section.productSections}" th:with="product = ${productSection.product}">
+                            <div class="single-product-card">
+                                <div class="part-img">
+                                    <img th:src="@{${product.mainImagePath}}" style="width: 180px; height: 230px;" alt="Product">
+                                </div>
+                                
+                         <div class="text-center">
+							<input type="text" class="product-detail-rating-star" dir="ltr" data-size="xs"
+										th:value="${product.averageRating}"/>
+                                    <span style="color: red;">&nbsp;&nbsp;&nbsp;[[${product.reviewCount}]] rating(s)</span>
+							</div>
+							
+                                <div class="part-txt">
+                                    <h4 class="product-name"><a th:href="@{${product.URI}}" th:title="${product.name}">[[${product.shortName}]]</a></h4>
+                                  <div th:replace="product/product_fragment :: product_price"></div>
+
+                                </div>
+                                <div class="cart-option">
+                                    <ul>
+                                        <li>
+                                            <a role="button" class="add-to-cart">
+                                                <i class="fa-light fa-cart-shopping"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a role="button" class="add-to-wish">
+                                                <i class="fa-light fa-heart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a role="button" class="quick-view">
+                                                <i class="fa-light fa-image"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-details.html" class="view-product">
+                                                <i class="fa-light fa-eye"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                
+               
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------------------- FEATURED PRODUCT SECTION END --------------------------------->
+	
+</body>
+</html>
