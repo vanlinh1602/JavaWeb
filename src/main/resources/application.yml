@@ -1,7 +1,5 @@
 server:
-  port: 80
-  servlet:
-    context-path: /Client
+  port: 3000
 spring:
   datasource:
     password: Linh@1622
