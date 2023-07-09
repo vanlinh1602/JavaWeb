@@ -12,5 +12,5 @@ java -jar JavaWeb.jar --spring.datasource.password={Your mySQL Pass}
 ```
 - `Your mySQL Pass`: your my sql pass you set up when install mySQL
 4. Open your browser and input:
-  `http://localhost:80/Client`
+  `http://localhost:3000/Client`
 
