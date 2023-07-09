@@ -15,7 +15,7 @@
             }, {
                 name: 'withdrawals',
                 data: [23, 22, 35, 27, 43, 22, 17, 31, 22, 27, 12, 16],
-                color: '#fe5502'
+                color: '#ff3333'
             }],
             chart: {
                 type: 'area',
